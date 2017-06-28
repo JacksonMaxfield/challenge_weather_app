@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Lookout</title>
+    <link rel="icon" href="resources/icon.png">
+    <link href="style/css/master.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--<script src="js/line_chart.js" charset="utf-8"></script>
+    <script src="js/add_charts.js" charset="utf-8"></script>-->
+    <!--<script src="js/nav.js"></script>
+    <script src="js/scroller.js" charset="utf-8"></script>
+    <script src="js/scroll-to.js" charset="utf-8"></script>-->
+  </head>
+  <body>
+    <div class="main_container">
+      <div id="Seattle" class="location_card">
+        <div class="information_now">
+          <div class="primary_details flex_start_between">
+            <div class="current_state_image_container flex_center">
+              <img class="current_state_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+            </div>
+            <div class="current_state_info_container">
+              <h2 class="location_temp font_standard font_bold">65&deg;&nbsp;-&nbsp;Seattle</h2>
+              <h2 class="location_temp_like font_standard font_light">Feels like 65&deg;</h2>
+              <h2 class="location_temp_annoucements font_standard font_light">Partly Cloudy</h2>
+            </div>
+          </div>
+          <div class="secondary_details flex_start_between">
+            <div class="current_range flex_center">
+              <div class="current_range_image_container flex_center">
+                <img class="current_range_image" src="resources/weather_icons/thermometer.svg" alt="temperature range" />
+              </div>
+              <div class="current_range_info_container">
+                <h2 class="range_high font_standard font_bold">73&deg;&nbsp;High</h2>
+                <h2 class="range_low font_standard font_light">56&deg;&nbsp;Low</h2>
+              </div>
+            </div>
+            <div class="current_precip flex_center">
+              <div class="current_precip_image_container flex_center">
+                <img class="current_precip_image" src="resources/weather_icons/dark_light_rain.svg" alt="precipitation chance" />
+              </div>
+              <div class="current_precip_info_container">
+                <h2 class="precip_chance font_standard font_bold">0%</h2>
+                <h2 class="precip_label font_standard font_light">Rain</h2>
+              </div>
+            </div>
+            <div class="current_wind flex_center">
+              <div class="current_wind_image_container flex_center">
+                <img class="current_wind_image" src="resources/weather_icons/compass.svg" alt="wind speed" />
+              </div>
+              <div class="current_wind_info_container">
+                <h2 class="wind_speed font_standard font_bold">3 mph</h2>
+                <h2 class="wind_label font_standard font_light">East</h2>
+              </div>
+            </div>
+          </div>
+          <div class="summary_details">
+            <h2 class="information_now_tag font_standard font_light">Looks like 65&deg; all day, low chance of rain and light wind.</h2>
+          </div>
+        </div>
+        <div class="forecasting">
+          <div class="forecasting_today flex_start_between">
+            <!--
+            This is the SVG for visualization attachment
+            <svg id="forecasting_today_target" width="325" height="104"></svg>
+            -->
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">12:00</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">65&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">14:00</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">63&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">16:00</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">60&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">18:00</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">59&deg;</h2>
+            </div>
+          </div>
+          <div class="forecasting_week flex_start_between">
+            <!--
+            This is the SVG for visualization attachment
+            <svg id="forecasting_week_target" width="325" height="104"></svg>
+            -->
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">Tomorrow</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">66&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">Friday</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">69&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">Saturday</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">74&deg;</h2>
+            </div>
+            <div class="time_block flex_center wrap_content">
+              <h2 class="time_block_time font_standard font_bold">Sunday</h2>
+              <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
+              <h2 class="time_block_temp font_standard font_light">75&deg;</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Malmo" class="location_card">
+        <div class="information_now">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

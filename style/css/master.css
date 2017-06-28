@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+* {
+  margin: 0;
+  padding: 0; }
+
+.font_standard {
+  font-family: "Ubuntu", sans-serif; }
+
+.font_bold {
+  font-weight: bold; }
+
+.font_light {
+  font-weight: lighter; }
+
+.main_container {
+  align-items: center;
+  background-color: #c0d3da;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw; }
+
+.location_card {
+  background-color: whitesmoke;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  height: 500px;
+  margin: 10px;
+  width: 325px; }
+
+.information_now, .forecasting_today {
+  border-bottom: 1px solid #dee9ed;
+  border-radius: 1px;
+  height: 44%;
+  margin: 5% 6% 5% 6%;
+  padding: 0px 0px 10px 0px;
+  width: 88%; }
+
+.primary_details {
+  border-bottom: 1px solid #dee9ed;
+  border-radius: 1px;
+  height: 45%;
+  margin: 0%;
+  width: 100%; }
+
+.flex_start_between {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; }
+
+.flex_start_center {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center; }
+
+.flex_center {
+  align-items: center;
+  display: flex;
+  justify-content: center; }
+
+.wrap_content {
+  flex-wrap: wrap; }
+
+.current_state_image_container {
+  height: 100%;
+  margin: 0% 5% 0% 0%;
+  width: 25%; }
+
+.current_state_image {
+  height: 80%;
+  margin: 10%;
+  width: 80%; }
+
+.current_state_info_container {
+  height: 100%;
+  margin: auto 0% auto 5%;
+  width: 70%; }
+
+.location_temp {
+  font-size: 28px; }
+
+.location_temp_like {
+  font-size: 18px; }
+
+.location_temp_annoucements {
+  font-size: 14px;
+  margin: 20px 0px 0px 0px; }
+
+.secondary_details {
+  border-bottom: 1px solid #dee9ed;
+  border-radius: 1px;
+  height: 35%;
+  margin: 0% auto 0% 0%;
+  width: 100%; }
+
+.current_range, .current_precip, .current_wind {
+  height: 100%;
+  margin: 0% 2% 0% 2%;
+  width: 35%; }
+
+.current_range_image_container, .current_precip_image_container, .current_wind_image_container {
+  height: 70%;
+  margin: 0% 10% 0% 0%; }
+
+.current_range_image, .current_precip_image, .current_wind_image {
+  height: 60%; }
+
+.current_range_info_container, .current_precip_info_container, .current_wind_info_container {
+  margin: 0% 5% 0% 0%; }
+
+.range_high, .range_low, .precip_chance, .precip_label, .wind_speed, .wind_label, .time_block_time, .time_block_temp {
+  font-size: 12px; }
+
+.summary_details {
+  margin: 8px 10% 0px 10%;
+  width: 80%; }
+
+.information_now_tag {
+  font-size: 14px; }
+
+.forecasting, .forecasting_week {
+  height: 44%;
+  margin: 5% 6% 5% 6%;
+  padding: 0px 0px 10px 0px;
+  width: 88%; }
+
+.time_block {
+  height: 100%;
+  width: 20%; }
+
+.time_block_image {
+  width: 70%; }
+
+/*# sourceMappingURL=master.css.map */
