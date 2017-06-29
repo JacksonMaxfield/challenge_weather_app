@@ -89,7 +89,9 @@ function fillData(target, data) {
   console.log($('#' + target + '-forecasting-today').children());
 
   var forecastingToday = $('#' + target + '-forecasting-today').children();
+  var today = new Date();
   for (i = 0; i < forecastingToday.length; i ++) {
+    console.log('today:', today);
     console.log(forecastingToday[i]);
   }
 
