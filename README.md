@@ -1,4 +1,4 @@
-# topp_weather_app:
+# challenge_weather_app:
 rapid prototype weather app
 
 #### Please use Chrome for testing,
