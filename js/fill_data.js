@@ -1,33 +1,3 @@
-$(document).ready(function() {
-  var target_location         = 'Seattle';
-  var target_location_data    = {
-    'weather':        'Partly cloudy',
-    'annoucement':    'none',
-    'current_temp':   71,
-    'real_temp':      70,
-    'high_temp':      73,
-    'low_temp':       56,
-    'precip_chance':  0,
-    'wind_speed':     3,
-    'wind_direction': 'East',
-
-    'temp_hours':     [
-      {'temp': 63, 'weather': 'Partly cloudy'},
-      {'temp': 62, 'weather': 'Light rain'},
-      {'temp': 60, 'weather': 'Light rain'},
-      {'temp': 58, 'weather': 'Partly cloudy'}
-    ],
-    'temp_days':      [
-      {'temp': 66, 'weather': 'Partly cloudy'},
-      {'temp': 69, 'weather': 'Sunny'},
-      {'temp': 74, 'weather': 'Sunny'},
-      {'temp': 75, 'weather': 'Sunny'}
-    ]
-  }
-
-  fillData(target_location, target_location_data);
-});
-
 function fillData(target, data) {
   var newStateSource = getSource(data.weather);
   $('#' + target + '-weather-state').attr('src', 'resources/weather_icons/' + newStateSource + '.svg');
@@ -71,7 +41,7 @@ function fillData(target, data) {
   if (data.precip_chance < 20) {
     targetSummary += ', low chance of rain and';
   } else if (data.precip_chance >= 20 && data.precip_chance < 60) {
-    targetSummary += ', moderate chance of rain and';
+    targetSummary += ', chance of rain and';
   } else {
     targetSummary += ', high chance of rain and';
   }
@@ -81,20 +51,73 @@ function fillData(target, data) {
   } else if (data.wind_speed >= 8 && data.wind_speed < 15) {
     targetSummary += ' a bit windy.'
   } else {
-    targetSummary += 'very windy.'
+    targetSummary += ' very windy.'
   }
 
   $('#' + target + '-summary-tag').text(targetSummary);
 
-  console.log($('#' + target + '-forecasting-today').children());
-
   var forecastingToday = $('#' + target + '-forecasting-today').children();
-  var today = new Date();
-  for (i = 0; i < forecastingToday.length; i ++) {
-    console.log('today:', today);
-    console.log(forecastingToday[i]);
+  var currentHour = new Date().getHours();
+  var current_night = (currentHour >= 19 || currentHour <= 6);
+  for (i = 1; i <= forecastingToday.length; i ++) {
+    var targets = $(forecastingToday[i - 1]).children();
+
+    var updateHour = currentHour + (i*2);
+
+    if (updateHour >= 24) {
+      updateHour -= 24;
+    }
+
+    var night = (updateHour >= 19 || updateHour <= 6);
+
+    updateHour = '' + parseInt(updateHour);
+    if (updateHour.length < 2) {
+      updateHour = '0' + updateHour;
+    }
+
+    updateHour += ':00';
+
+    $(targets[0]).text(updateHour);
+
+    var newHourSource = '';
+    if (!night) {
+      newHourSource = getSource(data.temp_hours[i - 1].weather);
+    } else {
+      newHourSource = getNightSource(data.temp_hours[i - 1].weather);
+    }
+
+    $(targets[1]).attr('src', 'resources/weather_icons/' + newHourSource + '.svg');
+
+    $(targets[2]).text(data.temp_hours[i - 1].temp + String.fromCharCode(176));
   }
 
+
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var forecastingWeek = $('#' + target + '-forecasting-week').children();
+  var currentDay = new Date().getDay();
+  for (i = 1; i <= forecastingWeek.length; i ++) {
+    var targets = $(forecastingWeek[i - 1]).children();
+
+    updateDay = currentDay + i;
+    if (updateDay >= 7) {
+      updateDay -= 7;
+    }
+    if (updateDay == currentDay + 1 || updateDay == 0) {
+      updateDay = 'Tomorrow';
+    } else {
+      updateDay = days[updateDay];
+    }
+
+    $(targets[0]).text(updateDay);
+    var newDaySource = getSource(data.temp_days[i - 1].weather);
+    $(targets[1]).attr('src', 'resources/weather_icons/' + newDaySource + '.svg');
+    $(targets[2]).text(data.temp_days[i - 1].temp + String.fromCharCode(176));
+  }
+
+  var gradient_colors = generate_gradient_bg(data, current_night);
+
+  var targetCard = document.getElementById(target);
+  targetCard.style.backgroundImage = 'linear-gradient(to bottom right, ' + gradient_colors.current + ', ' + gradient_colors.future + ')';
 };
 
 var naming_conventions = {
@@ -103,8 +126,18 @@ var naming_conventions = {
   'Sunny': 'sun'
 };
 
+var night_conventions = {
+  'Partly cloudy': 'night_clouds',
+  'Light rain': 'light_rain',
+  'Sunny': 'night'
+}
+
 function getSource(data) {
-  return naming_conventions[data]
+  return naming_conventions[data];
+};
+
+function getNightSource(data) {
+  return night_conventions[data];
 };
 
 function averageTemp(current, hours) {

@@ -14,16 +14,17 @@
 
 .main_container {
   align-items: center;
-  background-color: #c0d3da;
+  background-color: whitesmoke;
   display: flex;
   height: 100vh;
   justify-content: center;
   width: 100vw; }
 
 .location_card {
-  background-color: whitesmoke;
+  background-color: #c0d3da;
   border: 1px solid transparent;
   border-radius: 14px;
+  color: whitesmoke;
   height: 500px;
   margin: 10px;
   width: 325px; }

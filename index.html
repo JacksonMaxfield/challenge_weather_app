@@ -8,15 +8,19 @@
     <link href="style/css/master.css" type="text/css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/gen_color.js" charset="utf-8"></script>
     <script src="js/fill_data.js" charset="utf-8"></script>
-    <!--<script src="js/line_chart.js" charset="utf-8"></script>
-    <script src="js/add_charts.js" charset="utf-8"></script>-->
-    <!--<script src="js/nav.js"></script>
-    <script src="js/scroller.js" charset="utf-8"></script>
-    <script src="js/scroll-to.js" charset="utf-8"></script>-->
+
+    <!--
+    Old visualization scripts
+    <script src="js/line_chart.js" charset="utf-8"></script>
+    <script src="js/add_charts.js" charset="utf-8"></script>
+    -->
   </head>
   <body>
     <div class="main_container">
+      <!--
+      Layout testing before js creation implementation
       <div id="Seattle" class="location_card">
         <div class="information_now">
           <div class="primary_details flex_start_between">
@@ -64,10 +68,6 @@
         </div>
         <div class="forecasting">
           <div id="Seattle-forecasting-today" class="forecasting_today flex_start_between">
-            <!--
-            This is the SVG for visualization attachment
-            <svg id="forecasting_today_target" width="325" height="104"></svg>
-            -->
             <div class="time_block flex_center wrap_content">
               <h2 class="time_block_time font_standard font_bold">12:00</h2>
               <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
@@ -89,11 +89,7 @@
               <h2 class="time_block_temp font_standard font_light">0&deg;</h2>
             </div>
           </div>
-          <div class="forecasting_week flex_start_between">
-            <!--
-            This is the SVG for visualization attachment
-            <svg id="forecasting_week_target" width="325" height="104"></svg>
-            -->
+          <div id="Seattle-forecasting-week" class="forecasting_week flex_start_between">
             <div class="time_block flex_center wrap_content">
               <h2 class="time_block_time font_standard font_bold">Tomorrow</h2>
               <img class="time_block_image" src="resources/weather_icons/cloud_sun.svg" alt="partly cloudy" />
@@ -117,11 +113,14 @@
           </div>
         </div>
       </div>
-      <div id="Malmo" class="location_card">
-        <div class="information_now">
-
-        </div>
+      -->
+      <div id="new_card_container" class="location_card flex_center">
+        City:
+        <input id="new_card_target" type="text" name="city"><br>
+        <button onclick="createNewCard()">Submit</button>
       </div>
     </div>
+
+    <script src="js/new_card.js" charset="utf-8"></script>
   </body>
 </html>
