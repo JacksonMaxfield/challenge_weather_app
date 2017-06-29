@@ -43,14 +43,14 @@ The lower you go on the page, the less granular the data becomes. So from the ma
   Lower information is clickable for more details, like accordion system, click on an hour and it expands to show information like that of the main top information.
 
 ### design/build:
-- [ ] build cards
-   - [ ] layout
+- [x] build cards
+   - [x] layout
    - [ ] color
-   - [ ] font
+   - [x] font
    - [ ] full process
-- [ ] create fake data
-- [ ] attach main information
-- [ ] attach secondary less granular data
+- [x] create fake data
+- [x] attach main information
+- [x] attach secondary less granular data
 - [ ] color encode cards by data
 - [ ] build card addition and settings
 
