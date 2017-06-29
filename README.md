@@ -71,6 +71,8 @@ I also would have liked to add settings and flesh out the card creation a bit mo
 
 While I think it would have been interesting to try to make this application for a wearable, I ended up choosing web as while a few tweaks this can be scaled to desktop and mobile. To make it mobile responsive, mobile breakpoints and some sass additions would need to be done, however that wouldn't be the largest issue in my opinion.
 
+There is a lot I could go over, and there are plenty of little optimizations I made in the application (time-based icons, summary-of-weather tags, etc.) but I think you get the gist.
+
 Because there is a lot going on in the code, I am commenting on the general structure and how it works here:
 - page is constructed, html, css (sass), render/ compile
 - user enters city (text), this fires a card creation function
