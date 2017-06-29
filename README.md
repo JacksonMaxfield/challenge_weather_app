@@ -1,5 +1,5 @@
 # topp_weather_app:
-rapid prototype weather app for Topp
+rapid prototype weather app
 
 #### Please use Chrome for testing,
 #### Simply enter a 'city' (any text) into the input box
